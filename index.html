@@ -7,63 +7,40 @@
     <title>Learn Alpine JS</title>
 
     <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <style>
+        .bold {
+            font-weight: bold;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
-    <h3>05 - More inputs</h3>
+    <h3>06 - Attribute Binding</h3>
 <!-- 
-    <form action="">
-        <input type="checkbox" name="agreed">
-        <button type="submit">Submit</button>
+    <div x-data>
+        <span class="blue" x-bind:class="{ 'bold': true }">Am I bold?</span>
+    </div> -->
+<!-- 
+    <div x-data="{ selected: false }">
+        <span x-bind:class="{ 'bold': selected }">Am I bold?</span>
+
+        <button x-on:click="selected = true">Make it bold</button>
+    </div> -->
+<!-- 
+    <form x-data="{ name: '' }" x-on:submit.prevent="alert(`Hey ${name}`)">
+        <input type="text" x-model="name">
+        <button type="submit" x-bind:disabled="name === ''">Lets go</button>
     </form> -->
-<!--     
-    <div x-data="{ agreed: false }">
-        <input type="checkbox" x-model="agreed">
-        <span x-show="agreed">
-            You have agreed
-        </span>
-    </div> -->
-<!-- 
-    <form 
-        x-data="{ 
-            users: [],
 
-            deleteUser () {
-                console.log(this.users)
-            }
-        }"
-        x-on:submit.prevent="deleteUser"
-    >
-        <input type="checkbox" x-model="users" value="1"> John
-        <input type="checkbox" x-model="users" value="2"> Jane
-        <input type="checkbox" x-model="users" value="3"> Wick
+    <div x-data="{ progress: 10 }">
+        <progress max="100" x-bind:value="progress">
+            <span x-text="`${progress}%`"></span>
+        </progress>
 
-        <button type="submit">Delete</button>
-    </form> -->
-<!-- 
-    <div x-data="{ plan: '' }">
-        <select x-model="plan">
-            <option value="">Please Choose</option>
-            <option value="yearly">Yearly</option>
-            <option value="monthly">Monthly</option>
-        </select>
-
-        <span x-show="plan" x-text="`You've chosen the ${plan} plan.`"></span>
-    </div> -->
-<!-- 
-    <div x-data="{ plan: 'monthly' }">
-        <select x-model="plan">
-            <option value="yearly">Yearly</option>
-            <option value="monthly">Monthly</option>
-        </select>
-
-        <span x-show="plan" x-text="`You've chosen the ${plan} plan.`"></span>
-    </div> -->
-
-    <div x-data="{ plan: 'monthly' }">
-        <input type="radio" name="plan" value="monthly" x-model="plan">
-        <input type="radio" name="plan" value="yearly" x-model="plan">
-
-        <span x-show="plan" x-text="`You've chosen the ${plan} plan.`"></span>
+        <button x-on:click="progress = progress + 5">Increment</button>
     </div>
 
 </body>
