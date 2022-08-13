@@ -7,30 +7,57 @@
     <title>Learn Alpine JS</title>
 
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked@2.1.3/marked.min.js"></script>
 </head>
 <body>
-    <h3>08 - Project: Markdown parser</h3>
+    <h3>10 - Looping</h3>
+<!-- 
+    <div x-data="{ fruits: ['apple', 'banana', 'orange', 'grapes']}">
+        <template x-for="fruit, index in fruits">
+            <div>
+                <span x-text="index + 1"></span> : <span x-text="fruit"></span>
+            </div>
+        </template>
+    </div> -->
+<!-- 
+    <div 
+        x-data="{ 
+            people: [
+                { id: 1, name: 'John'},
+                { id: 2, name: 'Jane'},
+                { id: 3, name: 'Wick'},
+            ]
+        }"
+    >
+        <template x-for="person in people" :key="person.id">
+            <div x-text="person.name"></div>
+        </template>
+
+    </div> -->
 
     <div 
-        x-data="{
-            body: '',
-            markdown: '',
+        x-data="{ 
+            people: [
+                { id: 1, name: 'John', points: 8 },
+                { id: 2, name: 'Jane', points: 20 },
+                { id: 3, name: 'Wick', points: 9 },
+            ],
 
-            preview () {
-                this.markdown = window.marked(this.body)
+            get peopleSortedByPoints () {
+                return this.people.sort((a, b) => b.points - a.points)
+            },
+
+            incrementPoints (id) {
+                this.people.find((p) => p.id === id).points++
             }
         }"
     >
-        <div>
+        <template x-for="person in peopleSortedByPoints" :key="person.id">
             <div>
-                <textarea cols="30" rows="4" x-model="body"></textarea>
+                <span x-text="person.name"></span> (<span x-text="person.points"></span> points)
+                <button x-on:click="incrementPoints(person.id)">Increment</button>
             </div>
-            <button x-on:click="preview">Preview</button>
-        </div>
+        </template>
 
-        <div x-html="markdown"></div>
     </div>
-
 </body>
 </html>
