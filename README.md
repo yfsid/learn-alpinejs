@@ -8,3 +8,8 @@
 6. Attribute binding
 7. Attribute binding Example
 8. x-text vs x-html
+9. Project: Markdown parser
+   setup markdown from cdn
+   ```html
+   <script src="https://cdn.jsdelivr.net/npm/marked@2.1.3/marked.min.js"></script>
+   ```
