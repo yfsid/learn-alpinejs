@@ -9,38 +9,32 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-    <h3>02 - Learn Visibilty</h3>
+    <h3>03 - Learn Model</h3>
 
-    <!-- <div x-data="{ visible: false }">
-        <div x-show="visible">Some content here</div>
+<!-- 
+    <div x-data="{ name: '' }">
+        <input type="text" x-model="name">
+        <span x-text="name"></span>
     </div> -->
 
-    <!-- <div x-data="{ records: [1, 2, 3, 4, 5, 6] }">
-        <div x-show="records.length >= 1">Some content here</div>
-    </div> -->
+<!--     
+    <form x-data="{ name: '' }" x-on:submit.prevent="console.log(name)">
+        <input type="text" x-model="name">
+        <button type="submit">Submit</button>
+    </form> -->
 
-    <!-- <div x-data="{ show: false }">
-        <button x-on:click="show = true">Show Content</button>
-        <div x-show="show">
-            Content
-        </div>
-    </div> -->
+    <div 
+        x-data="{ 
+            name: '',
 
-    <!-- <div x-data="{ show: false }">
-        <button x-on:click="show = !show">Toggle</button>
-        <div x-show="show">
-            Content
-        </div>
-    </div> -->
-
-    <div x-data="{ number: 0 }">
-        <button x-on:click="number++">Increment</button>
-
-        <div x-text="number"></div>
-        
-        <div x-show="number >= 10">
-            That's a big number!
-        </div>
+            makeNameUppercase () {
+                this.name = this.name.toUpperCase()
+            }
+        }"
+    >
+        <input type="text" x-model="name">
+        <span x-text="name"></span>
+        <button x-on:click="makeNameUppercase">Uppercase</button>
     </div>
 
 </body>
