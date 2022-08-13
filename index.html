@@ -9,32 +9,27 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-    <h3>03 - Learn Model</h3>
+    <h3>04 - Project: Image finder</h3>
 
-<!-- 
-    <div x-data="{ name: '' }">
-        <input type="text" x-model="name">
-        <span x-text="name"></span>
-    </div> -->
+    <div
+        x-data="{
+            query: '',
+            img: '',
 
-<!--     
-    <form x-data="{ name: '' }" x-on:submit.prevent="console.log(name)">
-        <input type="text" x-model="name">
-        <button type="submit">Submit</button>
-    </form> -->
-
-    <div 
-        x-data="{ 
-            name: '',
-
-            makeNameUppercase () {
-                this.name = this.name.toUpperCase()
+            getImage () {
+                this.img = `https://source.unsplash.com/1600x900/?${this.query}`
             }
         }"
     >
-        <input type="text" x-model="name">
-        <span x-text="name"></span>
-        <button x-on:click="makeNameUppercase">Uppercase</button>
+
+        <form x-on:submit.prevent="getImage">
+            <input type="text" x-model="query">
+            <button type="submit">Search</button>
+        </form>
+
+        <div x-show="img">
+            <img x-bind:src="img" style="width: 300px;">
+        </div>
     </div>
 
 </body>
