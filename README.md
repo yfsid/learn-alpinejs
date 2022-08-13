@@ -7,3 +7,4 @@
 5. More inputs
 6. Attribute binding
 7. Attribute binding Example
+8. x-text vs x-html

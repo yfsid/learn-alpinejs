@@ -7,66 +7,20 @@
     <title>Learn Alpine JS</title>
 
     <script src="https://unpkg.com/alpinejs" defer></script>
-
-    <style>
-        .bold {
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
-    <h3>07 - Attribute Binding Example</h3>
+    <h3>08 - x-text & x-html</h3>
 <!-- 
-    <div 
-        x-data="{
-            selected: [],
-            people: [
-                { id:1, name: 'John' },
-                { id:2, name: 'Jane' },
-                { id:3, name: 'Wick' },
-            ]
-        }"
-    >
-        <template x-for="person in people">
-            <div>
-                <input 
-                    type="checkbox"
-                    x-bind:value="person.id"
-                    x-bind:id="`person_${person.id}`"
-                    x-model.number="selected"
-                >
-                <span 
-                    x-text="person.name" 
-                    x-bind:class="{ 'bold': selected.includes(person.id)}">
-                </span>
-            </div>
-        </template>
+    <div x-data="{ hello: 'Hello World!'}">
+        <h1 x-text="hello.toUpperCase()"></h1>
+    </div> -->
+<!-- 
+    <div x-data="{ body: '<h1>Hello World!</h1>'}">
+        <div x-text="body"></div>
     </div> -->
 
-    <style>
-        .progress {
-            height: 10px;
-            width: 300px;
-            background-color: #ccc;
-        }
-        .progress-inner {
-            height: 10px;
-            background-color: slategray;
-        }
-    </style>
-    <div 
-        x-data="{ 
-            progress: 0,
-            increment () {
-                this.progress = this.progress + 5
-            }
-        }"
-    >
-        <div class="progress">
-            <div class="progress-inner" x-bind:style="`width: ${progress}%;`"></div>
-        </div>
-
-        <button x-on:click="increment">Increment</button>
+    <div x-data="{ body: '<h1>Hello World!</h1>'}">
+        <div x-html="body"></div>
     </div>
 
 </body>
