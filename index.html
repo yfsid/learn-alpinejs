@@ -9,27 +9,61 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-    <h3>04 - Project: Image finder</h3>
+    <h3>05 - More inputs</h3>
+<!-- 
+    <form action="">
+        <input type="checkbox" name="agreed">
+        <button type="submit">Submit</button>
+    </form> -->
+<!--     
+    <div x-data="{ agreed: false }">
+        <input type="checkbox" x-model="agreed">
+        <span x-show="agreed">
+            You have agreed
+        </span>
+    </div> -->
+<!-- 
+    <form 
+        x-data="{ 
+            users: [],
 
-    <div
-        x-data="{
-            query: '',
-            img: '',
-
-            getImage () {
-                this.img = `https://source.unsplash.com/1600x900/?${this.query}`
+            deleteUser () {
+                console.log(this.users)
             }
         }"
+        x-on:submit.prevent="deleteUser"
     >
+        <input type="checkbox" x-model="users" value="1"> John
+        <input type="checkbox" x-model="users" value="2"> Jane
+        <input type="checkbox" x-model="users" value="3"> Wick
 
-        <form x-on:submit.prevent="getImage">
-            <input type="text" x-model="query">
-            <button type="submit">Search</button>
-        </form>
+        <button type="submit">Delete</button>
+    </form> -->
+<!-- 
+    <div x-data="{ plan: '' }">
+        <select x-model="plan">
+            <option value="">Please Choose</option>
+            <option value="yearly">Yearly</option>
+            <option value="monthly">Monthly</option>
+        </select>
 
-        <div x-show="img">
-            <img x-bind:src="img" style="width: 300px;">
-        </div>
+        <span x-show="plan" x-text="`You've chosen the ${plan} plan.`"></span>
+    </div> -->
+<!-- 
+    <div x-data="{ plan: 'monthly' }">
+        <select x-model="plan">
+            <option value="yearly">Yearly</option>
+            <option value="monthly">Monthly</option>
+        </select>
+
+        <span x-show="plan" x-text="`You've chosen the ${plan} plan.`"></span>
+    </div> -->
+
+    <div x-data="{ plan: 'monthly' }">
+        <input type="radio" name="plan" value="monthly" x-model="plan">
+        <input type="radio" name="plan" value="yearly" x-model="plan">
+
+        <span x-show="plan" x-text="`You've chosen the ${plan} plan.`"></span>
     </div>
 
 </body>

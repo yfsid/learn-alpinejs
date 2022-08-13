@@ -4,3 +4,4 @@
 2. Visibility
 3. Model
 4. Project: Image finder
+5. More inputs
