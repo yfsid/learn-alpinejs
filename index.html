@@ -12,35 +12,61 @@
         .bold {
             font-weight: bold;
         }
-        .blue {
-            color: blue;
-        }
     </style>
 </head>
 <body>
-    <h3>06 - Attribute Binding</h3>
+    <h3>07 - Attribute Binding Example</h3>
 <!-- 
-    <div x-data>
-        <span class="blue" x-bind:class="{ 'bold': true }">Am I bold?</span>
+    <div 
+        x-data="{
+            selected: [],
+            people: [
+                { id:1, name: 'John' },
+                { id:2, name: 'Jane' },
+                { id:3, name: 'Wick' },
+            ]
+        }"
+    >
+        <template x-for="person in people">
+            <div>
+                <input 
+                    type="checkbox"
+                    x-bind:value="person.id"
+                    x-bind:id="`person_${person.id}`"
+                    x-model.number="selected"
+                >
+                <span 
+                    x-text="person.name" 
+                    x-bind:class="{ 'bold': selected.includes(person.id)}">
+                </span>
+            </div>
+        </template>
     </div> -->
-<!-- 
-    <div x-data="{ selected: false }">
-        <span x-bind:class="{ 'bold': selected }">Am I bold?</span>
 
-        <button x-on:click="selected = true">Make it bold</button>
-    </div> -->
-<!-- 
-    <form x-data="{ name: '' }" x-on:submit.prevent="alert(`Hey ${name}`)">
-        <input type="text" x-model="name">
-        <button type="submit" x-bind:disabled="name === ''">Lets go</button>
-    </form> -->
+    <style>
+        .progress {
+            height: 10px;
+            width: 300px;
+            background-color: #ccc;
+        }
+        .progress-inner {
+            height: 10px;
+            background-color: slategray;
+        }
+    </style>
+    <div 
+        x-data="{ 
+            progress: 0,
+            increment () {
+                this.progress = this.progress + 5
+            }
+        }"
+    >
+        <div class="progress">
+            <div class="progress-inner" x-bind:style="`width: ${progress}%;`"></div>
+        </div>
 
-    <div x-data="{ progress: 10 }">
-        <progress max="100" x-bind:value="progress">
-            <span x-text="`${progress}%`"></span>
-        </progress>
-
-        <button x-on:click="progress = progress + 5">Increment</button>
+        <button x-on:click="increment">Increment</button>
     </div>
 
 </body>
